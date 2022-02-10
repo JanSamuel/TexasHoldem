@@ -19,3 +19,9 @@ What it intends to do:
 - Game ends if all cards are reveled on table or only one player stays in game
 - If more than one player is left hand strength is calculated for each
 - All money from table is received by player with stronger hand
+
+To run game:
+Python3 ./holdem.py
+
+To run tests:
+python -m pytest --doctest-modules
