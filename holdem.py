@@ -62,18 +62,17 @@ def game(players: typing.List[Player], table: Table):
                 if player.is_playing:
                     result[idx] = hand_value(player.cards + table.visible_cards)
                     print(f"Player {idx+1} hand : {player.cards + table.visible_cards}")
-            winner = max(result, key=result.get)
+            winner = max(result, key=result.get)#todo: add check for higher card if two players have same hand
             players[winner].money += table.jackpot
 
 def main():
     deck = cards.shuffle_deck()
     players = sit_players(deck)
-    table = Table([deck.pop() for _ in range(3)])
 
-    game(players, table)
+    game(players, Table([deck.pop() for _ in range(3)]))
 
     for idx, player in enumerate(players):
-        print(f"Player {idx} ended with {player.money} USD")
+        print(f"Player {idx+1} ended with {player.money} USD")
 
 if __name__ == "__main__":
         main()
