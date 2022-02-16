@@ -29,8 +29,8 @@ class Table():
             if self.cards:
                 self.visible_cards.append(self.cards.pop())
             else:
-                self.zakoncz()
-    def zakoncz(self):
+                self.end_game()
+    def end_game(self):
         raise EndGameException()
 
     def possible_moves(self):

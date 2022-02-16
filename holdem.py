@@ -22,8 +22,7 @@ def round(players: typing.List[Player], table: Table):
         print(f"==============================================")
         print("You can : ")
 
-        basic_moves = table.possible_moves()
-        player_moves = player.moves_for_player(basic_moves)
+        player_moves = player.moves_for_player(table.possible_moves())
         moves = {str(idx+1): opcja for idx, opcja in enumerate(player_moves)}
         for num, move in moves.items():
             print(f"{num}. {move} ")
