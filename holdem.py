@@ -26,10 +26,7 @@ def round(players: typing.List[Player], table: Table):
         moves = {str(idx+1): opcja for idx, opcja in enumerate(player_moves)}
         for num, move in moves.items():
             print(f"{num}. {move} ")
-        actions = {
-            idx: getattr(player, move)
-            for idx, move in moves.items()
-        }
+        actions = {idx: getattr(player, move) for idx, move in moves.items()}
 
         action_num = None
         while action_num not in actions:

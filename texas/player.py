@@ -8,15 +8,16 @@ class Player():
         self.cards = cards
         self.money = money
         self.all_in = False
-        self.follded = False
+        self.folded = False
     @property
     def is_playing(self):
-        return not self.follded and (self.money > 0) or self.all_in
+        return not self.folded and (self.money > 0) or self.all_in
+
     def wait(self, *args, **kwargs):
         return Outcome("wait")
 
     def fold(self, *args, **kwargs):
-        self.follded=True
+        self.folded=True
         return Outcome("fold")
     
     def moves_for_player(self, acctions):
@@ -30,7 +31,7 @@ class Player():
             while(decision not in ('y', 'n')):
                 decision = input("You can only all-in. Do you want to bet all? y/n ").lower()
                 if decision == "y":
-                    outcome = Outcome("bet", wynik = self.money)
+                    outcome = Outcome("bet", outcome_value = self.money)
                     self.money = 0
                     self.all_in = True
                     return outcome
@@ -41,7 +42,7 @@ class Player():
             try:
                 amount = int(input("How much you bet? "))
                 if amount > self.money:
-                    print("Not enugh money ")
+                    print("Not enough money ")
                     raise ValueError()
             except ValueError:
                 print("Wrong value ")

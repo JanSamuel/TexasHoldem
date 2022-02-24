@@ -13,19 +13,19 @@ class Table():
         self.highest_bid = 0
         self.last_bidder = 0
         
-    def interact(self, outcome: Outcome, gracz: Player):
+    def interact(self, outcome: Outcome, player: Player):
         if outcome.interaction == "fold":
             return
 
         if self.last_bidder == None or (outcome.interaction == "bet" and self.highest_bid < outcome.outcome_value):
-            self.last_bidder = gracz
+            self.last_bidder = player
 
         if outcome.interaction == "bet":
             self.jackpot += outcome.outcome_value
             self.highest_bid = max(outcome.outcome_value, self.highest_bid)
 
-    def dealer_move(self, gracz: Player):
-        if gracz is self.last_bidder:
+    def dealer_move(self, player: Player):
+        if player is self.last_bidder:
             if self.cards:
                 self.visible_cards.append(self.cards.pop())
             else:
